@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmar Turno | AVALA</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="brand-logo">AVALA</div>
+        <div class="nav-actions">
+            <a href="tecnicos.html" class="link-login">← Volver a técnicos</a>
+        </div>
+    </nav>
+
+    <main class="checkout-container">
+        <p class="breadcrumb">Inicio › Diagnóstico › Técnicos Disponibles › Tus Datos y Pago</p>
+
+        <form class="checkout-grid" onsubmit="event.preventDefault(); window.location.href='servicio-activo.html';">
+            
+            <div class="checkout-section">
+                <h2>Tus datos y el domicilio del servicio</h2>
+                <p class="text-muted" style="margin-bottom: 1.5rem;">Para proteger a ambas partes, nuestros técnicos verificados solo asisten a domicilios de usuarios validados.</p>
+
+                <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+                    <div class="input-group">
+                        <label>Nombre y Apellido</label>
+                        <input type="text" class="urgency-input" placeholder="Ej: Valentín Silva">
+                    </div>
+                    <div class="input-group">
+                        <label>DNI</label>
+                        <input type="number" class="urgency-input" placeholder="Sin puntos">
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+                    <div class="input-group">
+                        <label>Calle y Número</label>
+                        <input type="text" class="urgency-input" placeholder="Calle 7 #1234">
+                    </div>
+                    <div class="input-group">
+                        <label>Piso / Depto (Opcional)</label>
+                        <input type="text" class="urgency-input" placeholder="4° B">
+                    </div>
+                </div>
+
+                <div class="input-group" style="margin-bottom: 2rem;">
+                    <label>Teléfono celular de contacto</label>
+                    <input type="tel" class="urgency-input" placeholder="221 555-5555">
+                </div>
+
+                <h2>Seleccioná la ventana horaria</h2>
+                <div class="time-windows">
+                    <div class="time-slot active" onclick="seleccionarSlot(this)">
+                        <strong>Hoy</strong>
+                        <span>14:00 - 16:00</span>
+                    </div>
+                    <div class="time-slot" onclick="seleccionarSlot(this)">
+                        <strong>Hoy</strong>
+                        <span>16:00 - 18:00</span>
+                    </div>
+                    <div class="time-slot" onclick="seleccionarSlot(this)">
+                        <strong>Mañana</strong>
+                        <span>09:00 - 11:00</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="checkout-sidebar">
+                <h3>Resumen de la operación</h3>
+                
+                <div class="summary-line">
+                    <span>Técnico seleccionado:</span>
+                    <strong>Kevin Maidana</strong>
+                </div>
+                <div class="summary-line">
+                    <span>Especialidad:</span>
+                    <span>Plomería Básica</span>
+                </div>
+                
+                <div class="summary-line" style="margin-top: 1rem; border-top: 1px dashed var(--color-border); padding-top: 0.5rem;">
+                    <span>Tasa de visita (Cobro inmediato):</span>
+                    <strong>$5.000</strong>
+                </div>
+                <div class="summary-line">
+                    <span>Mano de obra (Promesa en Escrow):</span>
+                    <strong>$30.000</strong>
+                </div>
+
+                <div class="security-box">
+                    <strong>🔒 Sistema de Garantia AVALA</strong>
+                    Los $30.000 de la mano de obra se pre-autorizan ahora, pero permanecen congelados de forma segura. El técnico no cobra hasta que confirmás la conformidad del arreglo. Tu DNI solo se usa para verificar identidad y nunca se comparte con el técnico.
+                </div>
+
+                <div class="summary-line total" style="margin-bottom: 1rem;">
+                    <span>Total a abonar hoy:</span>
+                    <strong>$5.000</strong>
+                </div>
+
+                <button type="submit" class="btn-primary btn-full">Confirmar Turno y Reservar</button>
+            </div>
+        </form>
+    </main>
+
+    <script>
+        function seleccionarSlot(el) {
+            document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('active'));
+            el.classList.add('active');
+        }
+    </script>
+</body>
+</html>

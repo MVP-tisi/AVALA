@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Especialistas | AVALA</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="brand-logo">AVALA</div>
+        <div class="nav-actions">
+            <a href="login.html" class="link-login">Ya tengo cuenta</a>
+        </div>
+    </nav>
+
+    <main class="auth-container">
+        <p class="breadcrumb">Inicio > Unirse como Técnico > Registro Profesional</p>
+
+        <div class="auth-box">
+            <h2>Creá tu perfil profesional</h2>
+            <p class="auth-subtitle">Completá tus datos operativos y financieros para ingresar a la grilla verificada.</p>
+            
+            <form class="auth-form" onsubmit="event.preventDefault(); window.location.href='login.html';">
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div class="input-group">
+                        <label>Nombre y Apellido</label>
+                        <input type="text" class="urgency-input" placeholder="Kevin Maidana">
+                    </div>
+                    <div class="input-group">
+                        <label>Teléfono Celular (WhatsApp)</label>
+                        <input type="tel" class="urgency-input" placeholder="221 555-6666">
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label>Email de contacto</label>
+                    <input type="email" class="urgency-input" placeholder="kevin.plomeria@email.com">
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div class="input-group">
+                        <label>Especialidad Principal</label>
+                        <select class="urgency-input">
+                            <option value="plomeria">Plomería y Gas</option>
+                            <option value="electricidad">Electricidad General</option>
+                            <option value="climatizacion">Refrigeración</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label>Zona de Cobertura Principal</label>
+                        <select class="urgency-input">
+                            <option value="casco">Casco Urbano La Plata</option>
+                            <option value="norte">Zona Norte (Tolosa / City Bell)</option>
+                            <option value="sur">Zona Sur (Altos de San Lorenzo)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label>Cuenta de Cobro (CBU / CVU / Alias)</label>
+                    <input type="text" class="urgency-input" placeholder="kevin.avala.mp o 00000031000...">
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 0.5rem; margin-bottom: 1.5rem;">
+                    <div class="input-group">
+                        <label>Foto de Perfil Comercial</label>
+                        <div class="file-upload-box" style="padding: 1rem; font-size: 0.8rem;">
+                            <span class="file-upload-icon" style="font-size:1.2rem;">👨‍🔧</span>
+                            <span class="file-upload-label" style="font-size:0.75rem; display:block;">Subir Foto de Rostro</span>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label>Identidad (Frente DNI)</label>
+                        <div class="file-upload-box" style="padding: 1rem; font-size: 0.8rem;">
+                            <span class="file-upload-icon" style="font-size:1.2rem;">🪪</span>
+                            <span class="file-upload-label" style="font-size:0.75rem; display:block;">Subir Documento</span>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-primary btn-full">Enviar a Verificación Técnica</button>
+            </form>
+        </div>
+
+        <div class="auth-context-panel">
+            <div>
+                <h3>Ecosistema de Cobro Garantizado</h3>
+                <p class="context-subtitle">Optimizamos la operación comercial para que te concentres únicamente en la reparación técnica.</p>
+            </div>
+            
+            <div class="context-step">
+                <span class="context-step-num">✓</span>
+                <div class="context-step-text">
+                    <strong>Garantía contra visitas vacías</strong>
+                    <span>Cuando un cliente confirma el turno, el sistema ya retiene el costo de la visita. Si viajás y no te atienden, cobrás los $5.000 igual.</span>
+                </div>
+            </div>
+
+            <div class="context-step">
+                <span class="context-step-num">✓</span>
+                <div class="context-step-text">
+                    <strong>Liquidación bancaria directa</strong>
+                    <span>La plata mayor de la mano de obra se transfiere directamente al CBU/Alias cargado a las 48 horas de finalizar el servicio. Sin manejo de efectivo.</span>
+                </div>
+            </div>
+
+            <div class="context-security-note">
+                <strong>🔒 Auditoría de Datos de Seguridad</strong>
+                Tu foto de perfil e identidad se cruzan con el Registro Nacional de las Personas para otorgar el Badge de Verificación. Esto le permite al usuario saber exactamente a quién le abre la puerta de su departamento.
+            </div>
+        </div>
+    </main>
+</body>
+</html>

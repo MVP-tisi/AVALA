@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Completar Perfil | AVALA</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="brand-logo">AVALA</div>
+        <div class="nav-actions">
+            <span class="badge-verified">Activación de cuenta</span>
+        </div>
+    </nav>
+
+    <main class="auth-container" style="margin-top: 3rem;">
+        <div class="auth-box">
+            <h2>Completá tu perfil comercial</h2>
+            <p class="auth-subtitle">Necesitamos tus datos operativos y financieros para habilitar la recepción de turnos y asegurar tus cobros.</p>
+            
+            <form class="auth-form" onsubmit="event.preventDefault(); window.location.href='tecnico-dashboard.html';">
+                
+                <div class="input-group" style="margin-bottom: 1.5rem;">
+                    <label>Zonas de Preferencia (Podés elegir varias)</label>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 0.5rem; background: var(--color-surface); padding: 1rem; border: 1px solid var(--color-border); border-radius: var(--radius-sm);">
+                        <label style="display: flex; align-items: center; gap: 0.5rem; font-weight: 500; font-size: 0.85rem; cursor: pointer;">
+                            <input type="checkbox" checked style="width: auto; cursor: pointer;"> Casco Urbano (La Plata)
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem; font-weight: 500; font-size: 0.85rem; cursor: pointer;">
+                            <input type="checkbox" style="width: auto; cursor: pointer;"> Tolosa / Ringuelet
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem; font-weight: 500; font-size: 0.85rem; cursor: pointer;">
+                            <input type="checkbox" style="width: auto; cursor: pointer;"> Gonnet / City Bell
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem; font-weight: 500; font-size: 0.85rem; cursor: pointer;">
+                            <input type="checkbox" style="width: auto; cursor: pointer;"> Los Hornos / San Carlos
+                        </label>
+                    </div>
+                </div>
+
+                <div class="input-group" style="margin-bottom: 1.5rem;">
+                    <label>Cuenta de Cobro (CBU / CVU / Alias)</label>
+                    <input type="text" class="urgency-input" placeholder="Ej: kevin.avala.mp o 00000031000...">
+                    <span style="font-size: 0.75rem; color: var(--color-text-muted); margin-top: 0.25rem;">A esta cuenta liquidaremos el dinero retenido a las 48hs de cada arreglo.</span>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 2rem;">
+                    <div class="input-group">
+                        <label>Foto de Perfil Frontal</label>
+                        <div class="file-upload-box" style="padding: 1.25rem 1rem;">
+                            <span class="file-upload-icon" style="font-size:1.5rem;">👨‍🔧</span>
+                            <span class="file-upload-label" style="font-size:0.75rem;">Subir Foto de Rostro</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <button type="submit" class="btn-primary btn-full">Activar mi cuenta e ingresar al Panel</button>
+            </form>
+        </div>
+
+        <div class="auth-context-panel">
+            <div>
+                <h3>Último paso para operar</h3>
+                <p class="context-subtitle">Esta información es privada y se utiliza exclusivamente para el motor de asignación y el circuito de pagos.</p>
+            </div>
+            
+            <div class="context-step">
+                <span class="context-step-num done" style="background: var(--color-black);">📍</span>
+                <div class="context-step-text">
+                    <strong>Filtro Geográfico</strong>
+                    <span>Al elegir múltiples zonas, el sistema solo te notificará de urgencias donde realmente estés dispuesto a viajar.</span>
+                </div>
+            </div>
+
+            <div class="context-step">
+                <span class="context-step-num done" style="background: var(--color-black);">💸</span>
+                <div class="context-step-text">
+                    <strong>Liquidación Bancaria Directa</strong>
+                    <span>Asociar un CBU/Alias nos permite transferirte los montos garantizados del sistema Escrow sin que manejes efectivo en la calle.</span>
+                </div>
+            </div>
+
+            <div class="context-security-note">
+                <strong>🔒 Auditoría de Seguridad AVALA</strong>
+                La foto de perfil se cruza con tu DNI para otorgarte el <span style="color: var(--color-success); font-weight: 700;">Badge de Identidad Verificada</span>. Los usuarios tienen un 85% más de probabilidad de aceptar tu presupuesto si ven que tu identidad está respaldada por la plataforma.
+            </div>
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión | AVALA</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="brand-logo">AVALA</div>
+        <div class="nav-actions">
+            <a href="index.html" class="link-login">Volver al Inicio</a>
+        </div>
+    </nav>
+
+    <main class="auth-container">
+        <p class="breadcrumb">Inicio > Cuentas > Iniciar Sesión</p>
+
+        <div class="auth-box">
+            <h2>Bienvenido</h2>
+            <p class="auth-subtitle">Seleccioná tu tipo de cuenta para acceder a la plataforma.</p>
+            
+            <div style="display: flex; background: var(--color-surface); padding: 0.3rem; border-radius: var(--radius-md); margin-bottom: 1.5rem; border: 1px solid var(--color-border);">
+                <button id="tabCliente" style="flex: 1; padding: 0.6rem; border: none; border-radius: var(--radius-sm); font-family: var(--font-heading); font-weight: 600; font-size: 0.85rem; cursor: pointer; background: white; color: var(--color-text-main);" onclick="seleccionarRol('cliente')">
+                    Soy Cliente
+                </button>
+                <button id="tabTecnico" style="flex: 1; padding: 0.6rem; border: none; border-radius: var(--radius-sm); font-family: var(--font-heading); font-weight: 600; font-size: 0.85rem; cursor: pointer; background: transparent; color: var(--color-text-muted);" onclick="seleccionarRol('tecnico')">
+                    Soy Técnico
+                </button>
+            </div>
+            
+            <form class="auth-form" onsubmit="event.preventDefault(); ejecutarLogin();">
+                <div class="input-group">
+                    <label>Email registrado</label>
+                    <input type="email" class="urgency-input" placeholder="usuario@email.com">
+                </div>
+                
+                <div class="input-group">
+                    <label>Contraseña</label>
+                    <input type="password" class="urgency-input" placeholder="••••••••">
+                </div>
+                
+                <button type="submit" class="btn-primary btn-full" id="btnIngresar">Ingresar como Cliente</button>
+            </form>
+        </div>
+
+        <div class="auth-context-panel">
+            <h3>Tu cuenta protegida</h3>
+            <p class="context-subtitle">Ecosistema digital de contratación de oficios con auditoría algorítmica.</p>
+            
+            <div class="context-step">
+                <div class="context-step-num">1</div>
+                <div class="context-step-text">
+                    <strong>Identidad Validada</strong>
+                    <span>Todos los prestadores de la grilla cuentan con DNI respaldado para asegurar la integridad presencial.</span>
+                </div>
+            </div>
+
+            <div class="context-step">
+                <div class="context-step-num">2</div>
+                <div class="context-step-text">
+                    <strong>IA Árbitro Activa</strong>
+                    <span>Los presupuestos y desvíos por imprevistos técnicos son validados mediante análisis de evidencia fotográfica.</span>
+                </div>
+            </div>
+
+            <div class="context-security-note">
+                <strong>Garantía de Fondos de 48hs</strong>
+                El dinero de la mano de obra permanece retenido de forma segura en nuestro sistema Escrow hasta que confirmás la conformidad del arreglo.
+            </div>
+        </div>
+    </main>
+
+    <script>
+        let rolSeleccionado = 'cliente';
+
+        function seleccionarRol(rol) {
+            rolSeleccionado = rol;
+            const tabBtnCliente = document.getElementById('tabCliente');
+            const tabBtnTecnico = document.getElementById('tabTecnico');
+            const btnIngresar = document.getElementById('btnIngresar');
+
+            if (rol === 'cliente') {
+                tabBtnCliente.style.background = 'white';
+                tabBtnCliente.style.color = 'var(--color-text-main)';
+                tabBtnTecnico.style.background = 'transparent';
+                tabBtnTecnico.style.color = 'var(--color-text-muted)';
+                btnIngresar.innerText = 'Ingresar como Cliente';
+            } else {
+                tabBtnTecnico.style.background = 'white';
+                tabBtnTecnico.style.color = 'var(--color-text-main)';
+                tabBtnCliente.style.background = 'transparent';
+                tabBtnCliente.style.color = 'var(--color-text-muted)';
+                btnIngresar.innerText = 'Ingresar como Técnico';
+            }
+        }
+
+        function ejecutarLogin() {
+            if (rolSeleccionado === 'cliente') {
+                window.location.href = 'index.html';
+            } else {
+                // El técnico recurrente va directo al panel operativo
+                window.location.href = 'onboarding-tecnico.html';
+            }
+        }
+    </script>
+</body>
+</html>

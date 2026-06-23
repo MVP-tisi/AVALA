@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicio en Curso | AVALA</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="brand-logo">AVALA</div>
+    </nav>
+
+    <main class="auth-container">
+        <p class="breadcrumb">Inicio › Diagnóstico › Técnicos Disponibles › Confirmación › Servicio en Curso</p>
+
+        <!-- Estado 1: Turno confirmado / técnico en camino -->
+        <div id="estado-confirmado" class="auth-box">
+            <div style="text-align:center; padding: 0.5rem 0 1.5rem;">
+                <div style="font-size: 2.5rem; margin-bottom: 0.75rem;">✅</div>
+                <span class="badge-verified" style="background: var(--color-success-bg); color: var(--color-success); font-size: 0.8rem;">TURNO CONFIRMADO</span>
+                <h2 style="margin-top: 1rem;">¡Tu turno está reservado!</h2>
+                <p class="text-muted" style="margin-top: 0.25rem;">Kevin Maidana fue notificado y tiene acceso a tu dirección.</p>
+            </div>
+
+            <div class="monto-final-box">
+                <div class="monto-line">
+                    <span>Técnico asignado</span>
+                    <strong>Kevin Maidana · ✓ ID Verificada</strong>
+                </div>
+                <div class="monto-line">
+                    <span>Especialidad</span>
+                    <strong>Plomería Básica</strong>
+                </div>
+                <div class="monto-line">
+                    <span>Ventana horaria</span>
+                    <strong>Hoy, 14:00 – 16:00</strong>
+                </div>
+                <div class="monto-line">
+                    <span>Dirección</span>
+                    <strong>Calle 7 #1234, Piso 4° B</strong>
+                </div>
+            </div>
+
+            <div class="security-box" style="margin-top: 1.25rem;">
+                <strong>🔒 Tus fondos están protegidos</strong>
+                Los $30.000 de mano de obra están retenidos en el sistema Escrow. Kevin no cobra nada hasta que vos confirmés que el trabajo está bien hecho.
+            </div>
+
+            <button class="btn-primary btn-full" style="margin-top: 1.5rem;" onclick="simularServicioActivo()">
+                [ Demo: Simular que Kevin llegó y el servicio comenzó ]
+            </button>
+        </div>
+
+        <!-- Estado 2: Servicio activo -->
+        <div id="estado-activo" class="auth-box" style="display:none;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                <span class="badge-verified" style="background: var(--color-success-bg); color: var(--color-success);">⚡ SERVICIO EN CURSO</span>
+                <span style="font-size: 0.8rem; color: var(--color-text-muted);">Inició a las 14:12 hs</span>
+            </div>
+
+            <div class="imprevisto-service-header">
+                <div class="tech-avatar">KM</div>
+                <div>
+                    <p style="font-weight:600; font-size:0.95rem;">Kevin Maidana</p>
+                    <p class="text-muted" style="font-size:0.8rem;">Plomería Básica · Presupuesto base: $30.000</p>
+                </div>
+            </div>
+
+            <div class="imprevisto-alert-box" style="margin-top: 1.25rem;">
+                <strong>📋 Trabajo en progreso</strong>
+                <p style="margin-top:0.25rem; font-size:0.875rem;">Si Kevin te notificó un imprevisto, lo verás aquí para aprobar o rechazar el ajuste antes de que continúe.</p>
+            </div>
+
+            <div style="display: flex; gap: 0.75rem; margin-top: 1.5rem;">
+                <button class="btn-primary btn-full" onclick="simularImprevisto()" style="background: #FFFBEB !important; color: #78350F; border: 1px solid #FDE68A; flex: 1;">
+                    🔔 Kevin reportó un imprevisto
+                </button>
+                <button class="btn-primary btn-full" onclick="simularFinalizacion()" style="background: var(--color-black) !important; flex: 1;">
+                    ✓ Kevin terminó el trabajo
+                </button>
+            </div>
+        </div>
+
+        <!-- Estado 3: Imprevisto pendiente de aprobación -->
+        <div id="estado-imprevisto" class="auth-box" style="display:none;">
+            <div class="aprobacion-urgencia-banner">
+                <span>🔔</span>
+                <span>Kevin está esperando tu respuesta para continuar el trabajo</span>
+            </div>
+
+            <h2 style="margin-top:1.25rem;">Se detectó un imprevisto</h2>
+            <p class="auth-subtitle">Kevin encontró una falla adicional no contemplada en el diagnóstico original. La IA analizó la evidencia y validó el recargo.</p>
+
+            <div class="evidencia-foto">
+                <div class="evidencia-foto-placeholder">
+                    <span style="font-size:2rem;">🔧</span>
+                    <span style="font-size:0.8rem; color:var(--color-text-muted); margin-top:0.5rem;">Foto enviada por Kevin</span>
+                    <span style="font-size:0.75rem; color:var(--color-text-muted);">Cañería de plomo deteriorada · Sección bajo bacha</span>
+                </div>
+            </div>
+
+            <div class="imprevisto-descripcion-box">
+                <p style="font-size:0.8rem; font-weight:600; color:var(--color-text-muted); margin-bottom:0.4rem; text-transform:uppercase; letter-spacing:0.05em;">Descripción del técnico</p>
+                <p style="font-size:0.9rem; line-height:1.6;">"Encontré la cañería de plomo original del edificio. Requiere reemplazo de 1,5m adicional que no estaba contemplado en el diagnóstico inicial."</p>
+            </div>
+
+            <div class="ia-analysis-box">
+                <div class="ia-analysis-header">
+                    <span class="ia-badge">IA</span>
+                    <strong>Recargo validado por IA</strong>
+                </div>
+                <p class="ia-analysis-text">La evidencia fotográfica es consistente con la descripción. El monto adicional es acorde a los parámetros del mercado.</p>
+            </div>
+
+            <div class="aprobacion-resumen">
+                <div class="aprobacion-line">
+                    <span>Presupuesto original aprobado</span>
+                    <strong>$30.000</strong>
+                </div>
+                <div class="aprobacion-line recargo-line">
+                    <span>Recargo validado por IA</span>
+                    <strong class="recargo-amount">+ $15.000</strong>
+                </div>
+                <div class="aprobacion-line aprobacion-total">
+                    <span>Nuevo total en garantía</span>
+                    <strong>$45.000</strong>
+                </div>
+            </div>
+
+            <div class="aprobacion-botones">
+                <button class="btn-primary btn-full btn-aprobar" onclick="aprobarImprevisto()">
+                    ✓ Aprobar y continuar ($45.000)
+                </button>
+                <button class="btn-rechazar btn-full" onclick="rechazarImprevisto()">
+                    Rechazar imprevisto
+                </button>
+            </div>
+            <p class="aprobacion-nota">Si rechazás, el trabajo se cierra con el presupuesto original de $30.000 y el técnico no continuará con la reparación adicional.</p>
+        </div>
+
+        <div class="auth-context-panel">
+            <h3>Estado del servicio</h3>
+            <p class="context-subtitle">Tu trabajo está monitoreado en todo momento por la plataforma.</p>
+
+            <div class="context-step" id="step1">
+                <span class="context-step-num done">✓</span>
+                <div class="context-step-text">
+                    <strong>Turno confirmado</strong>
+                    <span>Kevin fue notificado y aceptó el servicio</span>
+                </div>
+            </div>
+            <div class="context-step" id="step2">
+                <span class="context-step-num" id="num-step2">2</span>
+                <div class="context-step-text">
+                    <strong>Servicio en ejecución</strong>
+                    <span>El técnico está en tu domicilio</span>
+                </div>
+            </div>
+            <div class="context-step" id="step3">
+                <span class="context-step-num" id="num-step3">3</span>
+                <div class="context-step-text">
+                    <strong>Conformidad y pago</strong>
+                    <span>Vos confirmás y se liberan los fondos</span>
+                </div>
+            </div>
+
+            <div class="context-security-note">
+                <strong>🔒 Garantía de 48hs</strong>
+                Si el arreglo falla dentro de las 48hs, AVALA media la disputa y los fondos no se liberan hasta resolución.
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        function simularServicioActivo() {
+            document.getElementById('estado-confirmado').style.display = 'none';
+            document.getElementById('estado-activo').style.display = 'block';
+            document.getElementById('num-step2').textContent = '✓';
+            document.getElementById('num-step2').classList.add('done');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function simularImprevisto() {
+            document.getElementById('estado-activo').style.display = 'none';
+            document.getElementById('estado-imprevisto').style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function aprobarImprevisto() {
+            window.location.href = 'calificacion-extra.html';
+        }
+
+        function rechazarImprevisto() {
+            window.location.href = 'calificacion.html';
+        }
+
+        function simularFinalizacion() {
+            window.location.href = 'calificacion.html';
+        }
+    </script>
+</body>
+</html>

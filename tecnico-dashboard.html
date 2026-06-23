@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Técnico | AVALA</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="brand-logo">AVALA</div>
+        <div class="nav-actions">
+            <span class="badge-verified">Kevin M. · ID Verificada</span>
+            <a href="login.html" class="link-login" style="margin-left: 1rem;">Cerrar sesión</a>
+        </div>
+    </nav>
+
+    <main class="technicians-container">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+            <p class="breadcrumb" style="margin: 0;">Panel de Control › Estado Operativo</p>
+            <div style="display: flex; align-items: center; gap: 0.5rem; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 999px; padding: 0.3rem 0.75rem; cursor: pointer;" onclick="toggleDisponibilidad(this)">
+                <span id="dot-disp" style="width:8px; height:8px; border-radius:50%; background: var(--color-success); display:inline-block;"></span>
+                <span id="label-disp" style="font-size: 0.8rem; font-weight: 600;">Disponible</span>
+            </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
+            <div style="background: var(--color-surface); padding: 1.25rem; border: 1px solid var(--color-border); border-radius: var(--radius-md);">
+                <span style="font-size: 0.75rem; color: var(--color-text-muted); font-weight: 500; text-transform: uppercase;">Saldo Disponible</span>
+                <h3 style="font-family: var(--font-heading); font-size: 1.75rem; color: var(--color-success); margin-top: 0.25rem;">$12.500</h3>
+                <span style="font-size: 0.75rem; color: var(--color-text-muted);">Listo para retirar</span>
+            </div>
+
+            <div style="background: var(--color-surface); padding: 1.25rem; border: 1px solid var(--color-border); border-radius: var(--radius-md); border-left: 3px solid #D97706;">
+                <span style="font-size: 0.75rem; color: #78350F; font-weight: 500; text-transform: uppercase;">Retenido en Escrow (48hs)</span>
+                <h3 id="saldoRetenido" style="font-family: var(--font-heading); font-size: 1.75rem; color: var(--color-text-main); margin-top: 0.25rem;">$0</h3>
+                <span id="notaReloj" style="font-size: 0.7rem; color: var(--color-text-muted); display: none;">⏱️ Liberación en 47h 52m</span>
+                <span id="notaVacia" style="font-size: 0.75rem; color: var(--color-text-muted);">Sin retenciones activas</span>
+            </div>
+
+            <div style="background: var(--color-surface); padding: 1.25rem; border: 1px solid var(--color-border); border-radius: var(--radius-md);">
+                <span style="font-size: 0.75rem; color: var(--color-text-muted); font-weight: 500; text-transform: uppercase;">Calificación</span>
+                <h3 style="font-family: var(--font-heading); font-size: 1.75rem; color: var(--color-text-main); margin-top: 0.25rem;">★ 4.8</h3>
+                <span style="font-size: 0.75rem; color: var(--color-text-muted);">Sobre 12 reseñas verificadas</span>
+            </div>
+
+            <div style="background: var(--color-surface); padding: 1.25rem; border: 1px solid var(--color-border); border-radius: var(--radius-md);">
+                <span style="font-size: 0.75rem; color: var(--color-text-muted); font-weight: 500; text-transform: uppercase;">Trabajos este mes</span>
+                <h3 style="font-family: var(--font-heading); font-size: 1.75rem; color: var(--color-text-main); margin-top: 0.25rem;">7</h3>
+                <span style="font-size: 0.75rem; color: var(--color-success); font-weight: 600;">98% sin disputas</span>
+            </div>
+        </div>
+
+        <div class="checkout-section" style="background: white; border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: 2rem; text-align: left;">
+            
+            <div id="flujoMatch">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                    <span class="ia-badge" style="background: #D97706;">🚨 SOLICITUD ENTRANTE</span>
+                    <span style="font-size: 0.8rem; color: #B45309; font-weight: 600; background: #FFFBEB; padding: 0.2rem 0.6rem; border-radius: 4px;">⏱️ Expira en 2:45 min</span>
+                </div>
+
+                <div class="imprevisto-service-header">
+                    <div class="tech-avatar">VS</div>
+                    <div>
+                        <h3 style="font-family: var(--font-heading); font-size: 1rem; font-weight: 600;">Valentín Silva</h3>
+                        <p style="font-size: 0.85rem; color: var(--color-text-muted);">Falla: Plomería Básica (Goteo bajo bacha) · <strong>Zona Centro, La Plata</strong></p>
+                    </div>
+                </div>
+
+                <div class="imprevisto-alert-box" style="margin-top: 1rem; margin-bottom: 1.5rem;">
+                    <strong>Tarifa transaccional pre-autorizada:</strong>
+                    <ul style="margin-left: 1.2rem; margin-top: 0.25rem; font-size: 0.85rem;">
+                        <li>Tasa de visita: <strong>$5.000</strong> (Asegurados si el usuario cancela en viaje o en puerta).</li>
+                        <li>Presupuesto base de mano de obra en Escrow: <strong>$30.000</strong>.</li>
+                    </ul>
+                </div>
+
+                <div style="display: flex; gap: 1rem;">
+                    <button class="btn-rechazar" style="flex: 1;" onclick="rechazarMatch()">Rechazar y pasar al siguiente técnico</button>
+                    <button class="btn-primary" style="flex: 1; border-radius: var(--radius-sm); padding: 0.85rem;" onclick="aceptarMatch()">✓ Aceptar y ver dirección exacta</button>
+                </div>
+            </div>
+
+            <div id="flujoEjecucion" style="display: none;">
+                <div style="margin-bottom: 1.5rem;">
+                    <span class="badge-verified" style="background: var(--color-success-bg); color: var(--color-success);">⚡ SERVICIO EN CURSO</span>
+                </div>
+
+                <div class="imprevisto-service-header">
+                    <div class="tech-avatar">VS</div>
+                    <div>
+                        <h3 style="font-family: var(--font-heading); font-size: 1rem; font-weight: 600;">Valentín Silva</h3>
+                        <p style="font-size: 0.85rem; color: var(--color-text-main);">📍 Dirección: <strong>Calle 7 #1234, Piso 4, Depto B</strong></p>
+                        <p style="font-size: 0.85rem; color: var(--color-text-muted);">📱 Teléfono de urgencia: <strong>221 555-5555</strong></p>
+                    </div>
+                </div>
+
+                <div class="monto-final-box" style="margin-top: 1rem;">
+                    <div class="monto-line">
+                        <span>Tasa de visita (Garantizada en cuenta):</span>
+                        <strong style="color: var(--color-success);">$5.000</strong>
+                    </div>
+                    <div class="monto-line">
+                        <span>Mano de obra original (Bloqueada en sistema):</span>
+                        <strong>$30.000</strong>
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
+                    <button class="btn-primary btn-full btn-enviar-cliente" onclick="activarFormularioImprevisto()" style="background: #FFFBEB !important; color: #78350F; border: 1px solid #FDE68A;">
+                        ⚠️ Reportar imprevisto / Modificación de alcance
+                    </button>
+                    <button class="btn-primary btn-full" onclick="finalizarTrabajoBase()" style="background: var(--color-black) !important;">
+                        Finalizar Trabajo Base ($30.000)
+                    </button>
+                </div>
+            </div>
+
+            <div id="formularioImprevisto" style="display: none;">
+                <h4 style="font-family: var(--font-heading); font-size: 0.95rem; margin-bottom: 1rem;">Auditoría de Modificación de Alcance</h4>
+                
+                <div class="input-group" style="margin-bottom: 1rem;">
+                    <label>Justificación técnica (La leerá el cliente y la auditará la IA)</label>
+                    <textarea class="urgency-input" id="descTecnica" style="min-height: 70px;" placeholder="Ej: Se detectó cañería de plomo sulfatada detrás de la bacha que requiere cambio de tramo entero..."></textarea>
+                </div>
+
+                <div class="input-group" style="margin-bottom: 1.5rem;">
+                    <label>Evidencia Fotográfica del Imprevisto</label>
+                    <div class="file-upload-box" onclick="procesarImagenSimulada()">
+                        <span class="file-upload-icon" id="iconoCarga">📸</span>
+                        <span class="file-upload-label" id="textoCarga">Hacé clic para capturar foto del problema en obra</span>
+                        <span class="file-upload-hint">El sistema escaneará materiales e infraestructura.</span>
+                    </div>
+                </div>
+
+                <div class="ia-analysis-box" id="analisisIA" style="display: none; margin-bottom: 1.5rem;">
+                    <div class="ia-analysis-header">
+                        <span class="ia-badge">IA</span>
+                        <strong>Análisis estructural completado</strong>
+                    </div>
+                    <p class="ia-analysis-text">Evidencia fotográfica consistente con desgaste crítico en material de plomo. Ajuste de precio indexado según valores de mercado.</p>
+                    <div class="ia-recargo-line ia-total-line">
+                        <span>Recargo computado:</span>
+                        <strong class="recargo-amount">+$15.000</strong>
+                    </div>
+                </div>
+
+                <button class="btn-primary btn-full" id="btnEnviarIA" disabled onclick="enviarACliente()" style="background: var(--color-accent) !important; opacity: 0.5; cursor: not-allowed;">
+                    Enviar presupuesto ajustado a Valentín
+                </button>
+            </div>
+
+            <div id="estadoEsperaCliente" style="display: none;">
+                <div class="imprevisto-alert-box">
+                    <strong>⏱️ Esperando aprobación del usuario</strong>
+                    La notificación con la adenda auditada por valor de $45.000 fue enviada a la pantalla de Valentín Silva. No continúes las refacciones físicas hasta su validación digital.
+                </div>
+                <button class="btn-primary btn-full" onclick="simularAprobacionCliente()" style="margin-top: 1.5rem; background: var(--color-black) !important;">
+                    [ Simular que Valentín presiona "Aprobar" en su celular ]
+                </button>
+            </div>
+
+            <div id="estadoFinalizado" style="display: none; text-align: center; padding: 1rem;">
+                <span style="font-size: 2.5rem;">💸</span>
+                <h3 style="font-family: var(--font-heading); margin-top: 0.5rem;">¡Servicio Finalizado y Notificado!</h3>
+                <p class="text-muted" style="font-size: 0.85rem; margin-top: 0.25rem;">La solicitud de conformidad fue enviada al cliente. Los fondos correspondientes se han movido al módulo de resguardo preventivo.</p>
+                <button class="btn-primary" style="margin-top: 1.5rem; padding: 0.6rem 1.5rem; border-radius: var(--radius-sm);" onclick="window.location.reload()">Volver a ponerse disponible</button>
+            </div>
+
+        </div>
+
+        <!-- Historial de trabajos recientes -->
+        <div style="margin-top: 2rem;">
+            <h3 style="font-family: var(--font-heading); font-size: 1rem; margin-bottom: 1rem; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Últimos trabajos</h3>
+
+            <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+
+                <div style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 1rem 1.25rem; display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <p style="font-weight: 600; font-size: 0.9rem; margin-bottom: 0.15rem;">Plomería Básica · Valentín Silva</p>
+                        <p style="font-size: 0.8rem; color: var(--color-text-muted);">Zona Centro · hace 2 días</p>
+                    </div>
+                    <div style="text-align: right;">
+                        <p style="font-weight: 700; color: var(--color-success); font-family: var(--font-heading);">$30.000</p>
+                        <span style="font-size: 0.75rem; color: var(--color-text-muted);">★ 5.0</span>
+                    </div>
+                </div>
+
+                <div style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 1rem 1.25rem; display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <p style="font-weight: 600; font-size: 0.9rem; margin-bottom: 0.15rem;">Plomería con adenda · Martín R.</p>
+                        <p style="font-size: 0.8rem; color: var(--color-text-muted);">Tolosa · hace 5 días</p>
+                    </div>
+                    <div style="text-align: right;">
+                        <p style="font-weight: 700; color: var(--color-success); font-family: var(--font-heading);">$45.000</p>
+                        <span style="font-size: 0.75rem; color: var(--color-text-muted);">★ 4.8</span>
+                    </div>
+                </div>
+
+                <div style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 1rem 1.25rem; display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <p style="font-weight: 600; font-size: 0.9rem; margin-bottom: 0.15rem;">Plomería Básica · Laura P.</p>
+                        <p style="font-size: 0.8rem; color: var(--color-text-muted);">Casco Urbano · hace 1 semana</p>
+                    </div>
+                    <div style="text-align: right;">
+                        <p style="font-weight: 700; color: var(--color-success); font-family: var(--font-heading);">$30.000</p>
+                        <span style="font-size: 0.75rem; color: var(--color-text-muted);">★ 4.6</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        function toggleDisponibilidad(el) {
+            const dot = document.getElementById('dot-disp');
+            const label = document.getElementById('label-disp');
+            if (label.textContent === 'Disponible') {
+                dot.style.background = '#9CA3AF';
+                label.textContent = 'No disponible';
+                el.style.opacity = '0.65';
+            } else {
+                dot.style.background = 'var(--color-success)';
+                label.textContent = 'Disponible';
+                el.style.opacity = '1';
+            }
+        }
+
+        function rechazarMatch() {
+            alert('Solicitud rechazada. El sistema reasignará el viaje automáticamente sin penalizaciones.');
+            window.location.reload();
+        }
+
+        function aceptarMatch() {
+            document.getElementById('flujoMatch').style.display = 'none';
+            document.getElementById('flujoEjecucion').style.display = 'block';
+        }
+
+        function activarFormularioImprevisto() {
+            document.getElementById('flujoEjecucion').style.display = 'none';
+            document.getElementById('formularioImprevisto').style.display = 'block';
+        }
+
+        function procesarImagenSimulada() {
+            document.getElementById('iconoCarga').innerText = '✓';
+            document.getElementById('textoCarga').innerText = 'evidencia_plomo_bacha.png procesada correctamente';
+            document.getElementById('analisisIA').style.display = 'block';
+            const btn = document.getElementById('btnEnviarIA');
+            btn.disabled = false;
+            btn.style.opacity = '1';
+            btn.style.cursor = 'pointer';
+        }
+
+        function enviarACliente() {
+            document.getElementById('formularioImprevisto').style.display = 'none';
+            document.getElementById('estadoEsperaCliente').style.display = 'block';
+        }
+
+        function simularAprobacionCliente() {
+            alert('Ajuste autorizado por el cliente. Fondos complementarios retenidos en la cuenta transaccional.');
+            document.getElementById('estadoEsperaCliente').style.display = 'none';
+            document.getElementById('flujoEjecucion').style.display = 'block';
+            const botones = document.getElementById('flujoEjecucion').getElementsByTagName('button');
+            botones[0].style.display = 'none';
+            botones[1].innerText = 'Finalizar Trabajo con Adenda ($45.000)';
+            botones[1].setAttribute('onclick', 'finalizarTrabajoExtra()');
+        }
+
+        function finalizarTrabajoBase() {
+            document.getElementById('flujoEjecucion').style.display = 'none';
+            document.getElementById('estadoFinalizado').style.display = 'block';
+            document.getElementById('saldoRetenido').innerText = '$30.000';
+            document.getElementById('notaReloj').style.display = 'block';
+            document.getElementById('notaVacia').style.display = 'none';
+        }
+
+        function finalizarTrabajoExtra() {
+            document.getElementById('flujoEjecucion').style.display = 'none';
+            document.getElementById('estadoFinalizado').style.display = 'block';
+            document.getElementById('saldoRetenido').innerText = '$45.000';
+            document.getElementById('notaReloj').style.display = 'block';
+            document.getElementById('notaVacia').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
